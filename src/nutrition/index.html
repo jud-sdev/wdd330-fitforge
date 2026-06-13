@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitForge | Nutrition</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">FITFORGE</a>
+    <nav>
+      <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/exercises/">Exercises</a></li>
+        <li><a href="/nutrition/" class="active">Nutrition</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Nutrition Lookup</h1>
+
+    <div class="search-bar">
+      <input type="text" id="food-search" placeholder="Describe a food (e.g. 2 eggs and toast)" />
+      <button class="btn btn-primary" id="analyze-btn">Analyze</button>
+    </div>
+
+    <div class="spinner" id="loading-spinner"></div>
+
+    <ul class="nutrition-results" id="nutrition-results"></ul>
+  </main>
+
+  <footer>
+    &copy; 2025 FitForge | WDD 330 Final Project
+  </footer>
+
+  <script type="module" src="/js/nutrition.js"></script>
+</body>
+</html>

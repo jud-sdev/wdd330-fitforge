@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitForge | Exercises</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">FITFORGE</a>
+    <nav>
+      <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/exercises/" class="active">Exercises</a></li>
+        <li><a href="/nutrition/">Nutrition</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Exercise Library</h1>
+
+    <div class="filters">
+      <div class="filter-group">
+        <label for="bodypart-filter">Body Part</label>
+        <select id="bodypart-filter">
+          <option value="">All Body Parts</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="equipment-filter">Equipment</label>
+        <select id="equipment-filter">
+          <option value="">All Equipment</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="spinner" id="loading-spinner"></div>
+
+    <ul class="exercise-list" id="exercise-list"></ul>
+  </main>
+
+  <footer>
+    &copy; 2025 FitForge | WDD 330 Final Project
+  </footer>
+
+  <script type="module" src="/js/exercises.js"></script>
+</body>
+</html>
