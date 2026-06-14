@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitForge | Workout Builder</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">FITFORGE</a>
+    <nav>
+      <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/exercises/">Exercises</a></li>
+        <li><a href="/workout-builder/" class="active">Builder</a></li>
+        <li><a href="/nutrition/">Nutrition</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Build a Workout</h1>
+
+    <div class="builder-top">
+      <div class="routine-name-group">
+        <label for="routine-name">Routine Name</label>
+        <input type="text" id="routine-name" placeholder="e.g. Push Day A" />
+      </div>
+      <div class="builder-actions">
+        <button class="btn btn-primary" id="save-btn">Save Routine</button>
+        <button class="btn btn-secondary" id="load-btn">Load Routine</button>
+      </div>
+    </div>
+
+    <div class="builder-layout">
+      <section class="exercise-search-panel">
+        <h2>Exercise Library</h2>
+        <input type="text" id="exercise-search" class="builder-search" placeholder="Search exercises..." />
+        <div class="spinner" id="search-spinner"></div>
+        <ul class="search-results" id="search-results"></ul>
+      </section>
+
+      <section class="current-routine-panel">
+        <h2>Current Routine — <span id="exercise-count">0</span> exercises</h2>
+        <ul class="routine-list" id="routine-list"></ul>
+        <p class="empty-routine" id="empty-msg">Add exercises from the library to build your routine.</p>
+      </section>
+    </div>
+
+    <!-- Load Modal -->
+    <div class="modal-overlay hide" id="load-modal">
+      <div class="modal">
+        <h2>Saved Routines</h2>
+        <ul class="saved-routines-list" id="saved-routines-list"></ul>
+        <button class="btn btn-secondary" id="close-modal">Close</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 FitForge | WDD 330 Final Project
+  </footer>
+
+  <script type="module" src="/js/workout-builder.js"></script>
+</body>
+</html>
