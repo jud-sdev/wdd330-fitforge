@@ -9,7 +9,7 @@ const spinner = document.getElementById('loading-spinner');
 function exerciseCardTemplate(exercise) {
   return `
     <li class="exercise-card">
-      <img src="${exercise.gifUrl}" alt="${exercise.name}" loading="lazy" />
+      <img src="${exercise.gifUrl || '/images/exercise-placeholder.svg'}" alt="${exercise.name}" loading="lazy" />
       <div class="exercise-card__info">
         <p class="exercise-card__name">${exercise.name}</p>
         <p class="exercise-card__target">Target: ${exercise.targetMuscles.join(', ')}</p>
