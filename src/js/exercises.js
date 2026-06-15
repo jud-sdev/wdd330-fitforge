@@ -84,14 +84,29 @@ async function loadExercises() {
 
 bodyPartFilter.addEventListener('change', () => {
   equipmentFilter.value = '';
+  localStorage.setItem('ff-last-bodypart', bodyPartFilter.value);
+  localStorage.setItem('ff-last-equipment', '');
   loadExercises();
 });
 
 equipmentFilter.addEventListener('change', () => {
   bodyPartFilter.value = '';
+  localStorage.setItem('ff-last-equipment', equipmentFilter.value);
+  localStorage.setItem('ff-last-bodypart', '');
   loadExercises();
 });
 
-// Initial load
-loadFilters();
-loadExercises();
+// Restore last filters from localStorage
+async function init() {
+  await loadFilters();
+
+  const savedBodyPart = localStorage.getItem('ff-last-bodypart');
+  const savedEquipment = localStorage.getItem('ff-last-equipment');
+
+  if (savedBodyPart) bodyPartFilter.value = savedBodyPart;
+  if (savedEquipment) equipmentFilter.value = savedEquipment;
+
+  loadExercises();
+}
+
+init();

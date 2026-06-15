@@ -1,10 +1,19 @@
-const BASE_URL = 'https://world.openfoodfacts.net/api/v2';
+const BASE_URL = 'https://world.openfoodfacts.net/cgi/search.pl';
 
 export default class NutritionData {
   async getNutrients(query) {
-    const res = await fetch(
-      `${BASE_URL}/search?search_terms=${encodeURIComponent(query)}&page_size=5&fields=product_name,nutriments,image_front_small_url,serving_size`
-    );
+    const params = new URLSearchParams({
+      search_terms: query,
+      search_simple: '1',
+      action: 'process',
+      json: '1',
+      page_size: '10',
+      sort_by: 'unique_scans_n',
+      cc: 'us',
+      fields: 'product_name,nutriments,image_front_small_url,serving_size',
+    });
+
+    const res = await fetch(`${BASE_URL}?${params}`);
 
     if (!res.ok) {
       throw new Error('Failed to fetch nutrition data');
@@ -17,7 +26,8 @@ export default class NutritionData {
     }
 
     return data.products
-      .filter((p) => p.product_name)
+      .filter((p) => p.product_name && /[a-zA-Z]/.test(p.product_name))
+      .slice(0, 5)
       .map((p) => ({
         food_name: p.product_name,
         serving_qty: 1,

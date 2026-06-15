@@ -510,6 +510,64 @@ h2 {
   display: none !important;
 }
 
+/* FADE-IN ANIMATION */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.exercise-card {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.nutrition-card {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.routine-item {
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+/* MODAL ANIMATION */
+.modal-overlay:not(.hide) .modal {
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* PULSE ANIMATION FOR LOGO */
+.logo {
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.logo:hover {
+  text-shadow: 0 0 12px rgba(255, 90, 31, 0.6);
+}
+
+/* GLOW ON FOCUS FOR INPUTS */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 6px rgba(255, 90, 31, 0.4);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
 /* FOOTER */
 footer {
   text-align: center;

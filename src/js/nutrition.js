@@ -50,6 +50,8 @@ async function analyzeFood() {
   const query = searchInput.value.trim();
   if (!query) return;
 
+  localStorage.setItem('ff-last-nutrition-search', query);
+
   showSpinner();
   resultsList.innerHTML = '';
 
@@ -68,3 +70,9 @@ analyzeBtn.addEventListener('click', analyzeFood);
 searchInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') analyzeFood();
 });
+
+// Restore last nutrition search from localStorage
+const lastNutritionSearch = localStorage.getItem('ff-last-nutrition-search');
+if (lastNutritionSearch) {
+  searchInput.value = lastNutritionSearch;
+}
