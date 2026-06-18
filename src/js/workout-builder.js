@@ -13,6 +13,7 @@ const loadBtn = document.getElementById('load-btn');
 const loadModal = document.getElementById('load-modal');
 const savedRoutinesList = document.getElementById('saved-routines-list');
 const closeModal = document.getElementById('close-modal');
+const logBtn = document.getElementById('log-btn');
 
 let currentRoutine = [];
 let allExercises = [];
@@ -42,6 +43,7 @@ function routineItemTemplate(item, index) {
         <label>Sets <input type="number" class="sets-input" value="${item.sets}" min="1" data-index="${index}" /></label>
         <label>Reps <input type="number" class="reps-input" value="${item.reps}" min="1" data-index="${index}" /></label>
         <label>Rest <input type="text" class="rest-input" value="${item.rest}" data-index="${index}" placeholder="60s" /></label>
+        <label>Weight <input type="number" class="weight-input" value="${item.weight || 0}" min="0" data-index="${index}" placeholder="kg" /></label>
       </div>
       <button class="btn btn-remove remove-btn" data-index="${index}">Remove</button>
     </li>
@@ -87,6 +89,12 @@ function renderRoutine() {
       currentRoutine[e.target.dataset.index].rest = e.target.value;
     });
   });
+
+  document.querySelectorAll('.weight-input').forEach((input) => {
+    input.addEventListener('change', (e) => {
+      currentRoutine[e.target.dataset.index].weight = Number(e.target.value);
+    });
+  });
 }
 
 function addExercise(exercise) {
@@ -98,6 +106,7 @@ function addExercise(exercise) {
     sets: 3,
     reps: 10,
     rest: '60s',
+    weight: 0,
   });
   renderRoutine();
 }
@@ -199,6 +208,33 @@ loadBtn.addEventListener('click', () => {
 
 closeModal.addEventListener('click', () => {
   loadModal.classList.add('hide');
+});
+
+// Log completed workout
+logBtn.addEventListener('click', () => {
+  const name = routineNameInput.value.trim();
+  if (!name) {
+    alert('Please enter a routine name.');
+    return;
+  }
+  if (currentRoutine.length === 0) {
+    alert('Add at least one exercise to log.');
+    return;
+  }
+
+  const logs = JSON.parse(localStorage.getItem('ff-workout-logs') || '[]');
+  logs.push({
+    routineName: name,
+    date: new Date().toISOString(),
+    exercises: currentRoutine.map((ex) => ({
+      name: ex.name,
+      sets: ex.sets,
+      reps: ex.reps,
+      weight: ex.weight || 0,
+    })),
+  });
+  localStorage.setItem('ff-workout-logs', JSON.stringify(logs));
+  alert(`Workout "${name}" logged! Check the Dashboard for your stats.`);
 });
 
 // Load all exercises for searching

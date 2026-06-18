@@ -9,7 +9,7 @@ const spinner = document.getElementById('loading-spinner');
 function nutritionCardTemplate(food) {
   return `
     <li class="nutrition-card">
-      <img src="${food.photo.thumb}" alt="${food.food_name}" />
+      ${food.photo.thumb ? `<img src="${food.photo.thumb}" alt="${food.food_name}" />` : ''}
       <div class="nutrition-card__info">
         <p class="nutrition-card__name">${food.food_name}</p>
         <p style="color: var(--text-muted); font-size: 0.85rem;">

@@ -9,7 +9,7 @@
 <body>
   <header>
     <a href="/" class="logo">FITFORGE</a>
-    <nav>
+    <nav aria-label="Main navigation">
       <ul>
         <li><a href="/" class="active">Dashboard</a></li>
         <li><a href="/exercises/">Exercises</a></li>
@@ -28,6 +28,34 @@
         <a href="/workout-builder/" class="btn btn-secondary">Build Workout</a>
         <a href="/nutrition/" class="btn btn-secondary">Log Nutrition</a>
       </div>
+    </section>
+
+    <section class="dashboard-stats">
+      <h2>Your Stats</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p class="stat-value" id="total-workouts">0</p>
+          <p class="stat-label">Total Workouts</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value" id="this-week">0</p>
+          <p class="stat-label">This Week</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value" id="current-streak">0</p>
+          <p class="stat-label">Day Streak</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value" id="total-volume">0</p>
+          <p class="stat-label">Total Volume (kg)</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="recent-workouts">
+      <h2>Recent Workouts</h2>
+      <ul class="workout-log-list" id="recent-log"></ul>
+      <p class="empty-routine" id="no-logs-msg">No workouts logged yet. Complete a routine to see your history here.</p>
     </section>
   </main>
 

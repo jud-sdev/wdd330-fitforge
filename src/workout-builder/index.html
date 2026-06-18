@@ -9,7 +9,7 @@
 <body>
   <header>
     <a href="/" class="logo">FITFORGE</a>
-    <nav>
+    <nav aria-label="Main navigation">
       <ul>
         <li><a href="/">Dashboard</a></li>
         <li><a href="/exercises/">Exercises</a></li>
@@ -30,12 +30,14 @@
       <div class="builder-actions">
         <button class="btn btn-primary" id="save-btn">Save Routine</button>
         <button class="btn btn-secondary" id="load-btn">Load Routine</button>
+        <button class="btn btn-log" id="log-btn">Log Workout</button>
       </div>
     </div>
 
     <div class="builder-layout">
       <section class="exercise-search-panel">
         <h2>Exercise Library</h2>
+        <label for="exercise-search" class="sr-only">Search exercises</label>
         <input type="text" id="exercise-search" class="builder-search" placeholder="Search exercises..." />
         <div class="spinner" id="search-spinner"></div>
         <ul class="search-results" id="search-results"></ul>

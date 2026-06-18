@@ -427,6 +427,7 @@ h2 {
   display: flex;
   gap: 1rem;
   margin-bottom: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .routine-item__fields label {
@@ -505,9 +506,111 @@ h2 {
   gap: 0.5rem;
 }
 
+/* SCREEN READER ONLY */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 /* HIDE UTILITY */
 .hide {
   display: none !important;
+}
+
+/* DASHBOARD STATS */
+.dashboard-stats {
+  margin-top: 2rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stat-card {
+  background-color: var(--bg-surface);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* RECENT WORKOUTS */
+.recent-workouts {
+  margin-top: 2.5rem;
+}
+
+.workout-log-list {
+  list-style: none;
+}
+
+.workout-log-item {
+  background-color: var(--bg-surface);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 0.75rem;
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.log-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+.log-date {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.log-exercises {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.log-summary {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* LOG BUTTON */
+.btn-log {
+  background-color: var(--secondary);
+  color: var(--bg-dark);
+  font-weight: 700;
 }
 
 /* FADE-IN ANIMATION */
@@ -523,7 +626,7 @@ h2 {
 }
 
 .exercise-card {
-  animation: fadeInUp 0.4s ease forwards;
+  animation: fadeInUp 0.4s ease both;
 }
 
 .nutrition-card {
@@ -613,5 +716,13 @@ footer {
   .builder-top {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .builder-actions {
+    flex-wrap: wrap;
   }
 }
